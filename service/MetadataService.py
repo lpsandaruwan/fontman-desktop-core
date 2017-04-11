@@ -13,7 +13,6 @@ class MetadataService:
 
     def add_new(
             self,
-            metadata_id,
             font_id,
             default_fontface,
             download_url,
@@ -21,7 +20,6 @@ class MetadataService:
             version
     ):
         new_metadata = Metadata(
-            metadata_id=metadata_id,
             font_id=font_id,
             default_fontface=default_fontface,
             download_url=download_url,
@@ -34,8 +32,8 @@ class MetadataService:
 
         return new_metadata
 
-    def delete_by_metadata_id(self, metadata_id):
-        self.find_by_font_id(metadata_id).delete()
+    def delete_by_font_id(self, font_id):
+        self.find_by_font_id(font_id).delete()
         db_session.commit()
 
     def find_all(self):

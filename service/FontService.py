@@ -14,7 +14,6 @@ class FontService:
     def add_new(self, font_id, name):
         new_font = Font(
             font_id=font_id,
-            is_chosen = False,
             is_installed=False,
             is_upgradable=False,
             name=name
@@ -27,9 +26,6 @@ class FontService:
 
     def find_all(self):
         return db_session.query(Font).all()
-
-    def find_all_chosen(self):
-        return db_session.query(Font).filter_by(is_chosen=True)
 
     def find_all_font_ids(self):
         return db_session.query(Font.font_id)

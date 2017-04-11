@@ -11,9 +11,8 @@ from session import db_session
 
 class LanguageService:
 
-    def add_new(self, tag_id, font_id, language):
+    def add_new(self, font_id, language):
         new_tag = Language(
-            tag_id=tag_id,
             font_id=font_id,
             language=language
         )

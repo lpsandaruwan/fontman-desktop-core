@@ -19,7 +19,7 @@ def find_all_fontfaces():
     for fontface in FontFaceService().find_all():
         response_data.append(
             {
-                "fontface_id": fontface.fontface_id,
+                "id": fontface.id,
                 "fontface": fontface.fontface,
                 "font_id": fontface.font_id,
                 "resource_path": fontface.resource_path
@@ -29,13 +29,13 @@ def find_all_fontfaces():
     return jsonify(response_data)
 
 
-@fontfaces_blueprint.route("/fontfaces/<fontface_id>")
-def find_fontface_by_fontface_id(fontface_id):
+@fontfaces_blueprint.route("/fontfaces/<id>")
+def find_fontface_by_id(id):
     try:
-        fontface = FontFaceService().find_by_fontface_id(fontface_id).one()
+        fontface = FontFaceService().find_by_id(id).one()
         return jsonify(
             {
-                "fontface_id": fontface.fontface_id,
+                "id": fontface.id,
                 "fontface": fontface.fontface,
                 "font_id": fontface.font_id,
                 "resource_path": fontface.resource_path
@@ -57,7 +57,7 @@ def find_fontface_by_font_id():
         for fontface in fontfaces:
             response_data.append(
                 {
-                    "fontface_id": fontface.fontface_id,
+                    "id": fontface.id,
                     "fontface": fontface.fontface,
                     "font_id": fontface.font_id,
                     "resource_path": fontface.resource_path

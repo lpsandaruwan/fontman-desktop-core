@@ -1,13 +1,8 @@
 """ Consumer package
 
-Consumer classes for Fontman server.
+Contains link generations and API consuming functions for GitHub API
 
-Created by Lahiru Pathirage @ Mooniak<lpsandaruwan@gmail.com> on 26/11/2016
+Created by Lahiru Pathirage @ Mooniak<lpsandaruwan@gmail.com> on 10/04/17
 """
 
-from consumer.AuthConsumer import AuthConsumer
-from consumer.CollectionsConsumer import CollectionsConsumer
-from consumer.FontFacesConsumer import FontFacesConsumer
-from consumer.FontsConsumer import FontsConsumer
-from consumer.RolesConsumer import RolesConsumer
-from consumer.TagsConsumer import TagsConsumer
+from consumer.FontIndexConsumer import FontIndexConsumer

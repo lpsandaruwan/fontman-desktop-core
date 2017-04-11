@@ -15,7 +15,6 @@ class Font(Base):
     __tablename__ = "font"
 
     font_id = Column(Integer, primary_key=True)
-    is_chosen = Column(Boolean, default=False)
     is_installed = Column(Boolean, default=False)
     is_upgradable = Column(Boolean, default=False)
     name = Column(String(200), nullable=False)

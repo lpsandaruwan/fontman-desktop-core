@@ -14,8 +14,7 @@ class Metadata(Base):
 
     __tablename__ = "metadata"
 
-    metadata_id = Column(Integer, primary_key=True)
-    font_id = Column(Integer, nullable=False)
+    font_id = Column(Integer, nullable=False, primary_key=True)
     default_fontface = Column(String(50), nullable=False)
     download_url = Column(String(200), nullable=True)
     license = Column(String(50), nullable=False)

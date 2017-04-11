@@ -41,61 +41,6 @@ class FontManager:
     def __init__(self):
         self.__system = SystemService().find_system_info()
 
-    def get_active_fonts_list(self):
-        active_fonts = []
-        font_data = []
-        fonts_dirs = []
-
-        if self.__system.platform in "Windows":
-            fonts_dirs.append(
-                os.path.join(os.environ["WINDIR"], "Fonts")
-            )
-
-        elif self.__system.platform in "Linux":
-            fonts_dirs.append("/usr/share/fonts")
-
-            try:
-                fonts_dirs.append(os.path.join("~", ".fonts"))
-
-            except:
-                print("No user font directory")
-
-        else:
-            fonts_dirs.append(os.path.join("~", "Library/Fonts"))
-            fonts_dirs.append("/System/Library/Fonts")
-
-        # list font files in font directories
-        for dir in fonts_dirs:
-            active_fonts += find_files_by_extension(dir, ".ttf")
-            active_fonts += find_files_by_extension(dir, ".otf")
-
-        for font in active_fonts:
-            font_info = []
-
-            if "-" in font["name"]:
-                font_info = font["name"].split(".")[0].split("-")
-
-            else:
-                font_info.append(font["name"].split(".")[0])
-                font_info.append("Regular")
-
-            trigger = True
-
-            for element in font_data:
-                if font_info[0] == element["name"]:
-                    trigger = False
-                    break
-
-            if trigger:
-                font_data.append({
-                    "name": font_info[0],
-                    "displayText": font_info[0],
-                    "fontface": font_info[0] + "-Regular",
-                    "resource_path": font["file_path"]
-                })
-
-        return font_data
-
     def install_font(self, font_id):
         font_dir = "./data/" + font_id
         sys_font_dir = self.__system.font_directory
