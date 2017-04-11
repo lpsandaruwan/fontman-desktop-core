@@ -13,7 +13,7 @@ class FontIndexConsumer:
 
     def __init__(self):
         self.__font_index = "https://raw.githubusercontent.com/lpsandaruwan/" \
-                            "font-index-lakehouse/master/index.json"
+                            "fontman-lakehouse-font-index/master/index.json"
 
     def load_font_index(self):
         return json.loads(requests.get(self.__font_index).text)
